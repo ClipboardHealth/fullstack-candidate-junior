@@ -1,6 +1,7 @@
 import React from 'react'
 
 function JobType({filters}) {
+  //filter job type
   return (
     <div>
     <h3>JOB TYPE</h3>

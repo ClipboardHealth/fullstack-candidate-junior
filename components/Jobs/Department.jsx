@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Department({filters}) {
-
+//filter departments
   const top= filters.department.slice(0,9);
   return (
       <>

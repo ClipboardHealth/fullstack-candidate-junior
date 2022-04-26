@@ -1,6 +1,7 @@
-import HospitalJobs from "../HospitalJobs";
+import HospitalJobs from "./HospitalJobs";
 
 function Posts({ jobs }) {
+//sum of posts for total job postings
   let totalJobs = 0;
   jobs.jobs.forEach((e) => (totalJobs += e.total_jobs_in_hospital));
 

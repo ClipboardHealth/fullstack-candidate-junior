@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 function JobSubDetails({ details }) {
+
+  //dates to know how many weeks have passed
   const date1 = new Date(details.created).getTime();
   const date2 = new Date().getTime();
   const diff = date2 - date1;
   const weeksPassed = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+
 
   const [showDetails, setShowDetails] = useState(false);
 
@@ -14,7 +17,6 @@ function JobSubDetails({ details }) {
     setShowDetails(!showDetails);
   };
 
-  console.log(details)
 
   return (
     <>

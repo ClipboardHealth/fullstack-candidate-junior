@@ -1,6 +1,7 @@
 import React from "react";
 
 function Experience({filters}) {
+  //filter experience
   return (
     <div>
       <h3>EXPERIENCE</h3>

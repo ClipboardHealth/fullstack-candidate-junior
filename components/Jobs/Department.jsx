@@ -8,7 +8,7 @@ function Department({filters}) {
     <h3>DEPARTMENT</h3>
     {top.map(e=>{
       return(
-        <p> <a>{e.key}</a> {e.doc_count}</p>
+        <p key={e.key}> <a>{e.key}</a> {e.doc_count}</p>
       )
     } )}
     <button>Show more</button>

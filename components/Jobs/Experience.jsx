@@ -6,7 +6,7 @@ function Experience({filters}) {
     <div>
       <h3>EXPERIENCE</h3>
       {filters.experience.map(e=>{
-      return<p><a>{e.key}</a> {e.doc_count}</p>
+      return<p key={e.key}><a>{e.key}</a> {e.doc_count}</p>
     } )}
     </div>
   );

@@ -6,7 +6,7 @@ export default function WorkSchedule({filters}) {
     <h3>WORK SCHEDULE</h3>
     {filters.work_schedule.map(e=>{
       return(
-        <p> <a>{e.key}</a> {e.doc_count}</p>
+        <p key={e.key}> <a>{e.key}</a> {e.doc_count}</p>
       )
     } )}
     </div>

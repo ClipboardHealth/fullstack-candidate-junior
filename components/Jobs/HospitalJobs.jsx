@@ -20,7 +20,7 @@ function HospitalJobs({ data }) {
           {" "}
           {data.items.map((e) => {
             return (
-                <JobSubDetails details={e}/>
+                <JobSubDetails key={e.key} details={e}/>
             );
           })}
         </div>

@@ -6,7 +6,7 @@ function JobType({filters}) {
     <div>
     <h3>JOB TYPE</h3>
     {filters.job_type.map(e=>{
-      return <p><a>{e.key}</a> {e.doc_count}</p>
+      return <p key={e.key}><a>{e.key}</a> {e.doc_count}</p>
     } )}
   </div>
   )

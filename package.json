@@ -9,8 +9,13 @@
   },
   "dependencies": {
     "next": "10.0.3",
+    "next-redux-wrapper": "^7.0.5",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-redux": "^8.0.1",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.23"

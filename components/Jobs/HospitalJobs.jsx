@@ -4,24 +4,27 @@ import JobSubDetails from "./JobSubDetails";
 function HospitalJobs({ data }) {
 
   const [showList, setShowList] = useState(false);
-  const handleOnClickHospital = (data) => {
+  const handleOnClickHospital = () => {
     setShowList(!showList);
   };
   return (
     <>
-      <p onClick={(t) => handleOnClickHospital(data.name)}>
+      <div onClick={() => handleOnClickHospital()}>
         <button>
           { data.name.substring(0, 2).toUpperCase() }
         </button>{" "}
         {data.total_jobs_in_hospital} jobs for {data.name}
-      </p>
+      </div>
       {showList ? (
         <div>
           {" "}
           {data.items.map((e) => {
             return (
-                <JobSubDetails key={e.key} details={e}/>
-            );
+                <div key={Math.random(1000)}>
+                <hr/>
+                <JobSubDetails details={e}/>
+                </div>
+            )
           })}
         </div>
       ) : null}

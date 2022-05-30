@@ -4,12 +4,12 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/search";
 
 const Index = ({ jobs, filters }) => (
-  <p>
+  <div>
     <NavBar />
     <SearchBar />
     <Jobs jobs={jobs} filters={filters} />
     <Footer />
-  </p>
+  </div>
 );
 
 export async function getServerSideProps(context) {

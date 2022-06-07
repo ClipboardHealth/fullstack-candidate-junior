@@ -1,12 +1,12 @@
+import { useState } from "react";
 import Footer from "../components/Footer";
 import Jobs from "../components/Jobs";
 import NavBar from "../components/NavBar";
-import SearchBar from "../components/search";
+
 
 const Index = ({ jobs, filters }) => (
   <div>
     <NavBar />
-    <SearchBar />
     <Jobs jobs={jobs} filters={filters} />
     <Footer />
   </div>

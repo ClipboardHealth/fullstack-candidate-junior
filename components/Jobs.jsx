@@ -3,19 +3,153 @@ import Department from "./Jobs/Department";
 import WorkSchedule from "./Jobs/WorkSchedule";
 import Experience from "./Jobs/Experience";
 import Posts from "./Jobs/Posts";
-import styles from './Jobs.module.css';
+import FilterBar from "./Jobs/FilterBar";
+import SearchBar from "../components/search";
+import styles from "./Jobs.module.css";
+import { useState } from "react";
 
 export default function Jobs({ jobs, filters }) {
+  const jobsBackup = jobs.jobs;
+  const [hospitalList, setHospitalList] = useState(jobsBackup);
+  const [jobsList, setJobsList] = useState([]);
+
+  //búsqueda por job title o por hospital
+  const searchFunction = (input) => {
+    if (input.length > 0) {
+      let hospitalResult = jobsBackup.filter((hospital) =>
+        hospital.name.toLowerCase().includes(input)
+      );
+
+      if (hospitalResult.length === 0) {
+        let result = [];
+        jobsBackup.forEach((hospital) => {
+          for (let i = 0; i < hospital.items.length; i++) {
+            if (hospital.items[i].job_title.toLowerCase().includes(input))
+              result.push(hospital.items[i]);
+          }
+        });
+        setJobsList(result);
+      } else {
+        setHospitalList(hospitalResult);
+      }
+    } else {
+      setJobsList([]);
+      setHospitalList(jobsBackup);
+    }
+  };
+
+
+//filtra categorías como depto o job type
+  const FilterFunction = (type, filter) => {
+    let result = [];
+    switch (type) {
+      case "job type":
+        jobsBackup.forEach((hospital) => {
+          for (let i = 0; i < hospital.items.length; i++) {
+            if (
+              hospital.items[i].job_type.toLowerCase() === filter.toLowerCase()
+            )
+              result.push(hospital.items[i]);
+          }
+        });
+        setJobsList(result);
+        break;
+      case "department":
+        jobsBackup.forEach((hospital) => {
+          for (let i = 0; i < hospital.items.length; i++) {
+            for (let j = 0; j < hospital.items[i].department.length; j++) {
+              if (
+                hospital.items[i].department[j].toLowerCase() ===
+                filter.toLowerCase()
+              )
+                result.push(hospital.items[i]);
+            }
+          }
+        });
+        setJobsList(result);
+        break;
+      case "work schedule":
+        jobsBackup.forEach((hospital) => {
+          for (let i = 0; i < hospital.items.length; i++) {
+            if (
+              hospital.items[i].work_schedule.toLowerCase() ===
+              filter.toLowerCase()
+            )
+              result.push(hospital.items[i]);
+          }
+        });
+        setJobsList(result);
+        break;
+      case "experience":
+        jobsBackup.forEach((hospital) => {
+          for (let i = 0; i < hospital.items.length; i++) {
+            if (
+              hospital.items[i].experience.toLowerCase() ===
+              filter.toLowerCase()
+            )
+              result.push(hospital.items[i]);
+          }
+        });
+        setJobsList(result);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  //funcion de ordenamiento.
+  const SortFunction = (type, sort) => {
+  let ordered=[];
+    switch (type) {
+      case "Location":
+        break;
+      case "Role":          
+      if (sort === "Asc") {
+        ordered = [...jobsList].sort((a, b) =>
+          a.job_title > b.job_title ? 1 : -1
+        );      
+      }
+      if (sort === "Desc") {
+        ordered = [...jobsList].sort((a, b) =>
+          a.job_title < b.job_title ? 1 : -1
+        );
+      } 
+      setJobsList(ordered)
+        break;
+
+      case "Department":
+        console.log("department");
+        break;
+      case "Education":
+        console.log("education");
+        break;
+      case "Experience":
+        console.log("experience");
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className={styles.main}>
-      <div>
-        <JobType filters={filters} />
-        <Department filters={filters} />
-        <WorkSchedule filters={filters} />
-        <Experience filters={filters} />
-      </div>
-      <div>
-        <Posts jobs= {jobs}/>
+    <div>
+      <SearchBar searchFunction={searchFunction} />
+      <div className={styles.main}>
+        <div>
+          <JobType filters={filters} FilterFunction={FilterFunction} />
+          <Department filters={filters} FilterFunction={FilterFunction} />
+          <WorkSchedule filters={filters} FilterFunction={FilterFunction} />
+          <Experience filters={filters} FilterFunction={FilterFunction} />
+        </div>
+        <div>
+          <FilterBar
+            hospitals={hospitalList}
+            searched={jobsList}
+            SortFunction={SortFunction}
+          />
+          <Posts hospitals={hospitalList} searched={jobsList} />
+        </div>
       </div>
     </div>
   );

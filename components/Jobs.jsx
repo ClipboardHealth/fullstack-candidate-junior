@@ -13,6 +13,8 @@ export default function Jobs({ jobs, filters }) {
   const [hospitalList, setHospitalList] = useState(jobsBackup);
   const [jobsList, setJobsList] = useState([]);
 
+  console.log(jobsBackup)
+
   //búsqueda por job title o por hospital
   const searchFunction = (input) => {
     if (input.length > 0) {
@@ -103,6 +105,17 @@ export default function Jobs({ jobs, filters }) {
   let ordered=[];
     switch (type) {
       case "Location":
+        if (sort === "Asc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.location > b.location ? 1 : -1
+          );      
+        }
+        if (sort === "Desc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.location < b.location ? 1 : -1
+          );
+        } 
+        setJobsList(ordered);
         break;
       case "Role":          
       if (sort === "Asc") {
@@ -115,17 +128,47 @@ export default function Jobs({ jobs, filters }) {
           a.job_title < b.job_title ? 1 : -1
         );
       } 
-      setJobsList(ordered)
+      setJobsList(ordered);
         break;
 
       case "Department":
-        console.log("department");
+        if (sort === "Asc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.department[0] > b.department[0]? 1 : -1
+          );      
+        }
+        if (sort === "Desc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.department[0]< b.department[0] ? 1 : -1
+          );
+        } 
+        setJobsList(ordered);
         break;
       case "Education":
-        console.log("education");
+        if (sort === "Asc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.required_credentials[0] > b.required_credentials[0]  ? 1 : -1
+          );      
+        }
+        if (sort === "Desc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.required_credentials[0]  < b.required_credentials[0]  ? 1 : -1
+          );
+        } 
+        setJobsList(ordered);
         break;
       case "Experience":
-        console.log("experience");
+        if (sort === "Asc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.experience > b.experience ? 1 : -1
+          );      
+        }
+        if (sort === "Desc") {
+          ordered = [...jobsList].sort((a, b) =>
+            a.experience < b.experience ? 1 : -1
+          );
+        } 
+        setJobsList(ordered);
         break;
       default:
         break;

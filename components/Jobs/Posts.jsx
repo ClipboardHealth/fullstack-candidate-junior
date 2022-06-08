@@ -2,7 +2,6 @@ import HospitalJobs from "./HospitalJobs";
 import JobSubDetails from "./JobSubDetails";
 
 function Posts({ hospitals, searched }) {
-  console.log(searched);
   return (
     <>
       <div>

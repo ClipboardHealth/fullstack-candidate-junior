@@ -1,11 +1,10 @@
-import { useState } from "react";
 import Footer from "../components/Footer";
 import Jobs from "../components/Jobs";
 import NavBar from "../components/NavBar";
 
 
 const Index = ({ jobs, filters }) => (
-  <div>
+  <div className="bg-neutral-100">
     <NavBar />
     <Jobs jobs={jobs} filters={filters} />
     <Footer />

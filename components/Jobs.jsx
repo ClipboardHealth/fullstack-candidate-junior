@@ -5,7 +5,6 @@ import Experience from "./Jobs/Experience";
 import Posts from "./Jobs/Posts";
 import FilterBar from "./Jobs/FilterBar";
 import SearchBar from "../components/search";
-import styles from "./Jobs.module.css";
 import { useState } from "react";
 
 export default function Jobs({ jobs, filters }) {
@@ -13,7 +12,6 @@ export default function Jobs({ jobs, filters }) {
   const [hospitalList, setHospitalList] = useState(jobsBackup);
   const [jobsList, setJobsList] = useState([]);
 
-  console.log(jobsBackup)
 
   //búsqueda por job title o por hospital
   const searchFunction = (input) => {
@@ -178,14 +176,14 @@ export default function Jobs({ jobs, filters }) {
   return (
     <div>
       <SearchBar searchFunction={searchFunction} />
-      <div className={styles.main}>
-        <div>
+      <div className="flex flex-row text-left">
+        <div className="w-1/5">
           <JobType filters={filters} FilterFunction={FilterFunction} />
           <Department filters={filters} FilterFunction={FilterFunction} />
           <WorkSchedule filters={filters} FilterFunction={FilterFunction} />
           <Experience filters={filters} FilterFunction={FilterFunction} />
         </div>
-        <div>
+        <div className="m-6 p-4 bg-white border border-solid border-neutral-200 w-full">
           <FilterBar
             hospitals={hospitalList}
             searched={jobsList}

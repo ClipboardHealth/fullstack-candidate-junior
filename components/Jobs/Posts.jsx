@@ -8,6 +8,7 @@ function Posts({ hospitals, searched }) {
         {searched.length > 0 ? searched.map((job)=>{
           return(
             <div key={job.key}>
+              <hr/>
             <JobSubDetails  details={job}/>
             </div>
           )

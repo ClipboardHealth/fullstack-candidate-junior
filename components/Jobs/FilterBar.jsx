@@ -7,59 +7,55 @@ function FilterBar({ hospitals, searched, SortFunction }) {
   :hospitals.forEach((e) => (totalJobs += e.total_jobs_in_hospital));
 
   return (
-    <>
-    <div>
-        <p>{totalJobs} job postings</p>
+    <div className="flex flex-row justify-between py-8 text-sm">
+    <div className="flex">
+        <p className="mr-2 font-bold">{totalJobs.toLocaleString('en-US')} </p>
+        <p>job postings</p>
       </div>
-      <div>
-        <h3>Sort by</h3>
-        <select id="Location" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
+      <div className="flex justify-evenly">
+        <h3 className="text-neutral-400 mr-2">Sort by</h3>
+        <select className="mx-2" id="Location" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
           <option defaultValue>
-            {" "}
-            Location{" "}
+            Location
           </option>
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
           <option value="Remove">Remove</option>
         </select>
-        <select id="Role" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
+        <select className="mx-2" id="Role" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
           <option defaultValue>
-            {" "}
-            Role{" "}
+            Role
           </option>
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
           <option value="Remove">Remove</option>
         </select>
-        <select id="Department" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
+        <select className="mx-2" id="Department" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
           <option defaultValue>
-            {" "}
-            Department{" "}
+            Department
           </option>
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
           <option value="Remove">Remove</option>
         </select>
-        <select id="Education" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
+        <select className="mx-2" id="Education" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
           <option defaultValue>
-            {" "}
-            Education{" "}
+            Education
           </option>
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
           <option value="Remove">Remove</option>
         </select>
-        <select id="Experience" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
+        <select className="mx-2" id="Experience" onChange={(e)=> SortFunction(e.target.id, e.target.value)}>
           <option defaultValue>
-            {" "}
-            Experience{" "}
+            Experience
           </option>
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
           <option value="Remove">Remove</option>
         </select>
       </div>
-    </>
+    </div>
   )
 }
 

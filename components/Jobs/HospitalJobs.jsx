@@ -9,8 +9,8 @@ function HospitalJobs({ data }) {
   };
   return (
     <>
-      <div onClick={() => handleOnClickHospital()}>
-        <button>
+      <div className="text-sm py-1.5" onClick={() => handleOnClickHospital()}>
+        <button className="w-8 m-2 bg-neutral-400 mt-0.5 p-0.5 px-1 rounded-lg text-white text-base font-semibold">
           { data.name.substring(0, 2).toUpperCase() }
         </button>{" "}
         {data.total_jobs_in_hospital} jobs for {data.name}
